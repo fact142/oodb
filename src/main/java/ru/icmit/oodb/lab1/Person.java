@@ -1,60 +1,27 @@
-package ru.icmit.oodb.lab1;
+import java.util.ArrayList;
+
 
 public class Person {
-    private String firstName;
-    private String lastName;
-    private String phoneNumber;
-    private String email;
+    private String name;
+    private ArrayList<MusicList> myPlaylists = new ArrayList<MusicList>();
 
-    public Person() {
+    public Person(String name){
+        this.name = name;
     }
 
-    public Person(String firstName, String lastName, String phoneNumber, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
+    public MusicList createPlaylist(String title, String description, Song ...songs){
+        MusicList playlist = new MusicList(title, description, this, songs);
+
+        myPlaylists.add(playlist);
+
+        return playlist;
     }
 
-    @Override
-    public String toString() {
-        return "Person{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+    public String getName() {
+        return name;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public ArrayList<MusicList> getMyPlaylists() {
+        return myPlaylists;
     }
 }
